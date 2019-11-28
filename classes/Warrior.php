@@ -7,8 +7,8 @@ class Warrior extends Character{
         parent :: __construct($name);
     }
     public function spear($target){
-        $cost = rand(0,25);
-        $this->damage = $cost*2;  
+        $cost = rand(0,45);
+        $this->damage = $cost;  
         $target->setlifePoint($this->damage);    
         $status = "$this->name attaque $target->name . $target->name a perdu $this->damage  PV et il lui reste $target->lifePoint PV!";
         return $status;

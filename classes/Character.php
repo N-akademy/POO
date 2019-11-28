@@ -26,6 +26,10 @@ abstract class Character{
         return $this->lifePoint;
     }
 
+    public function getName(){
+        return $this->name;
+    }
+
 
 
 

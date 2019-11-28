@@ -15,7 +15,7 @@ while ($char->isAlive() && $char2->isAlive()){
     echo $char->spear($char2);
     if (!$char2->isAlive()){
         echo'<br>';
-        echo"$char->name a gagné.";
+        echo $char->getName(). " a gagné.";
     } 
     echo'<br>';
     if($char2->isAlive()){
@@ -23,7 +23,7 @@ while ($char->isAlive() && $char2->isAlive()){
         echo'<br>';
         if (!$char->isAlive()){
             echo'<br>';
-            echo"$char->name a gagné.";
+            echo $char2->GetName(). " a gagné.";
         echo'<br>';
         }
     }

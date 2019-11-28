@@ -19,7 +19,7 @@ class Magician extends Character{
     }
 
     private function fireBall ($target){
-        $cost = rand(0,25);
+        $cost = rand(0,30);
         if ($this->magicPoint >= $cost){
             $this->magicPoint -= $cost;
             $this->damage = $cost*2;  
