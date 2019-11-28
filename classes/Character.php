@@ -1,25 +1,18 @@
 <?php
 
-class Character{
+abstract class Character{
     //public $lifePoint = 100;
     //private $damage =15;
-    //public $name;
-    private $lifePoint = 100;
-    private $damage =15;
-    private $name;
+    public $name;
+    protected $lifePoint = 100;
+    protected $damage;//Passage en protected pour que les fille ai un acces au données//
+    //protected $name;
 
     public function __construct($name)
     {
         $this->name = $name;
     }
-    public function attack($target){
-        $target->lifePoint -= $this->damage;
-        if ($target->lifePoint<=0){
-            $target->lifePoint = 0 ;
-            return"$this->name attaque $target->name . $this->name a gagné !";
-        }
-        return"$this->name attaque $target->name . $target->name a perdu 15 points de vie et il lui reste $target->lifePoint point de vie !";
-    }
+
     public function isAlive(){
         if ($this->lifePoint > 0)
         {
@@ -28,4 +21,21 @@ class Character{
             return FALSE;
         }
     }
+
+    public function getLifePoint(){
+        return $this->lifePoint;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

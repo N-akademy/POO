@@ -1,24 +1,49 @@
 <?php
-require "./classes/Character.php";
+
+spl_autoload_register(function ($class) {
+    require 'classes/' .$class . '.php';
+});
+// auto chargement des pages class
+
+
+$char = new Warrior("Fenrir");
+$char2= new Magician("Ryouma");
 
 
 
-
-$character1 = new Character("Fenrir");
-$character2= new Character("Ryouma");
-
-
-echo $character1->attack($character2);
-echo'<br>';
-echo'<br>';
-while ($character1->isAlive() && $character2->isAlive()){
-    echo $character1->attack($character2);
-    //echo"$character1->name attaque $character2->name .$character2->name a perdu 15 points de vie et il lui en reste $character2->lifePoint";
+while ($char->isAlive() && $char2->isAlive()){
+    echo $char->spear($char2);
+    if (!$char2->isAlive()){
+        echo'<br>';
+        echo"$char->name a gagné.";
+    } 
     echo'<br>';
-    if($character2->isAlive()){
-        echo $character2->attack($character1); 
+    if($char2->isAlive()){
+        echo $char2->spell($char); 
         echo'<br>';
+        if (!$char->isAlive()){
+            echo'<br>';
+            echo"$char->name a gagné.";
         echo'<br>';
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
