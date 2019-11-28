@@ -2,7 +2,7 @@
 class Magician extends Character{
     private $magicPoint =100 ;
     private $shield = FALSE;
-    private $fireball= false;
+    private $regenerate= false;
 
     public function __construct($name)
     {   
@@ -10,12 +10,15 @@ class Magician extends Character{
     }
 
     public function spell ($target){
-        $action = rand(1,10);
-        if ($action<=7){
+        $action = rand(1,30);
+        if ($action<=10){
             return $this->fireBall($target);
-        }else if($action >=8){
+        }else if($action >=11 && $action<=20){
             return $this->shield();
-        }  
+        }
+        else if($action >=21 && $action<=30){
+            return $this->regenerate;
+        }
     }
 
     private function fireBall ($target){
@@ -36,14 +39,24 @@ class Magician extends Character{
         $this->shield =true;
         return"$this->name ($this->magicPoint PM ) a utilisé son Bouclier Magique .";
     }
+
+    private function regenerate (){
+        $this->regenerate =true;
+        $this->lifePoint= 100;
+        return"$this->name ($this->magicPoint PM ) a utilisé soin Magique .";
+    }
+
         
     public function setLifePoint($pain){
         if($this->shield==true){
             $this->shield=false;
         }else if($this->shield==false){
             $this->lifePoint -= $pain;
-        } 
-        
+        }else if ($this->regenerate == true){
+            $this->shield=false;
+        }else if($this->shield==false){
+            $this->lifePoint -= $pain;
+        }
         if ($this->lifePoint<=0){
             $this->lifePoint = 0 ;
             return;
